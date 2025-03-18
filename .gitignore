@@ -90,7 +90,3 @@ temp/
 *.bak
 *.swp
 *~.nib
-
-# Archivos específicos del proyecto
-config/api_keys.yaml
-config/credentials.yaml
