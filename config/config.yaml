@@ -1,0 +1,86 @@
+# Configuración general del proyecto
+general:
+  # Intervalo de actualización: "daily" o "6hours"
+  update_interval: "daily"
+  # Periodo histórico inicial en años (entre 1 y 5)
+  historical_period:
+    value: 1
+    unit: "months"  # Opciones: "years", "months", "weeks", "days"
+
+# Configuración de la visualización
+visualization:
+  # Colores para los diferentes niveles de sentimiento
+  colors:
+    muy_malo: "#FF0000"
+    malo: "#FF7F00"
+    neutro: "#FFFF00"
+    bueno: "#00FF00"
+    muy_bueno: "#00FFFF"
+  # Mostrar gráficos interactivos
+  interactive: true
+  # Guardar gráficos como imágenes
+  save_images: true
+
+# Configuración del análisis de sentimiento
+sentiment_analysis:
+  # Niveles de sentimiento: muy_malo, malo, neutro, bueno, muy_bueno
+  levels: 5
+  # Umbral para considerar una noticia relevante
+  relevance_threshold: 0.6
+  # Palabras clave adicionales para filtrar noticias relevantes
+  keywords:
+    - "resultados financieros"
+    - "ganancias"
+    - "pérdidas"
+    - "adquisición"
+    - "fusión"
+    - "lanzamiento"
+    - "producto"
+    - "demanda"
+    - "regulación"
+    - "CEO"
+  # Usar ChatGPT para el análisis de sentimiento
+  use_chatgpt: true
+
+# Lista de empresas a analizar
+companies:
+  - symbol: "IAG"
+    name: "International Airlines Group."
+    region: "UK"
+
+# Configuración de la base de datos
+database:
+  # Tipo de base de datos: "duckdb" o "json"
+  type: "duckdb"
+  # Nombre del archivo de base de datos
+  filename: "news_database.duckdb"
+
+# Configuración del seguimiento de costes de OpenAI
+cost_tracking:
+  # Activar seguimiento de costes
+  enabled: true
+  # Generar informe diario
+  daily_report: true
+  # Límite de gasto diario en USD (0 para sin límite)
+  daily_limit: 5.0
+  # Enviar alertas cuando se alcance un porcentaje del límite
+  alert_threshold: 80
+  # Guardar detalles de cada llamada a la API
+  save_details: true
+
+# Configuración de Superset
+superset:
+  # Activar integración con Superset
+  enabled: true
+  # Puerto para Superset
+  port: 8088
+  # Actualizar datos automáticamente después de cada análisis
+  auto_update: true
+  # Dashboards a generar
+  dashboards:
+    - name: "Análisis de Sentimiento por Empresa"
+      enabled: true
+    - name: "Seguimiento de Costes de OpenAI"
+      enabled: true
+    - name: "Correlación Sentimiento-Precio"
+      enabled: true
